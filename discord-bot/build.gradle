@@ -1,0 +1,53 @@
+plugins {
+    id 'java'
+    id 'com.github.johnrengelman.shadow' version '7.1.2'
+}
+
+group 'me.princecharming'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+    maven {
+        url 'https://m2.dv8tion.net/releases'
+    }
+    maven {
+        url 'https://mvnrepository.com/artifact/org.json/json'
+    }
+
+    maven {
+        url 'https://jitpack.io'
+    }
+
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
+    implementation("net.dv8tion:JDA:5.0.0-alpha.11")
+    implementation 'com.github.walkyst:lavaplayer-fork:1.3.97.1'
+    implementation 'org.json:json:20220320'
+    shadow 'junit:junit:3.8.2'
+
+}
+
+test {
+    useJUnitPlatform()
+}
+
+jar{
+    manifest{
+        attributes 'Main-Class' : 'com.princecharming.Main'
+        attributes 'Description': 'This is the working discord bot JAR file'
+    }
+}
+
+shadowJar {
+    archiveBaseName.set('shadow')
+    archiveClassifier.set('')
+    archiveVersion.set('')
+}
+
+
+
+
